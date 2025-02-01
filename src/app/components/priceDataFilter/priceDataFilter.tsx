@@ -1,7 +1,7 @@
 "use client";
 
 import { PriceIndex } from "@/app/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./priceDataFilter.module.css";
 
 type DataFilterProps = {
@@ -18,6 +18,10 @@ export default function PriceDataFilter({
 
   const [sortBy, setSortBy] = useState<keyof PriceIndex>("timestamp");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+
+  useEffect(() => {
+    filterData();
+  }, [sortBy, sortOrder]);
 
   const filterData = () => {
     const newFilteredData = dataToFilter.filter((dataPoint) => {
@@ -43,9 +47,15 @@ export default function PriceDataFilter({
     });
   };
 
-  const handleSortChangeClicked = (sortOrder: "asc" | "desc") => {
-    setSortOrder(sortOrder);
-    filterData();
+  const handleSortByChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSortBy = e.target.value as keyof PriceIndex;
+    setSortBy(newSortBy);
+  };
+
+  const handleSortChangeClicked = (order: "asc" | "desc") => {
+    if (sortOrder !== order) {
+      setSortOrder(order);
+    }
   };
 
   return (
@@ -73,10 +83,7 @@ export default function PriceDataFilter({
       </div>
       <div>
         <label>Sort By:</label>
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as keyof PriceIndex)}
-        >
+        <select value={sortBy} onChange={handleSortByChange}>
           <option value="timestamp">Timestamp</option>
           <option value="volume">Volume</option>
           <option value="low">Low</option>
@@ -86,12 +93,14 @@ export default function PriceDataFilter({
         <button
           className={styles.buttonWrapper}
           onClick={() => handleSortChangeClicked("asc")}
+          disabled={sortOrder === "asc"}
         >
           Sort Ascending
         </button>
         <button
           className={styles.buttonWrapper}
           onClick={() => handleSortChangeClicked("desc")}
+          disabled={sortOrder === "desc"}
         >
           Sort Descending
         </button>
