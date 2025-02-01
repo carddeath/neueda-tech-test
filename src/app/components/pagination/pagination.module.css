@@ -1,0 +1,17 @@
+.buttonWrapper {
+  background-color: aqua;
+  color: black;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+}
+
+.pages {
+  margin: 0;
+}
