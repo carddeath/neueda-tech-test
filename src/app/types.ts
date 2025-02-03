@@ -3,6 +3,6 @@ export type PriceIndex = {
   high: number;
   low: number;
   open: number;
-  timestamp: Date;
+  timestamp: string;
   volume: number;
 };

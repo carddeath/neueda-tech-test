@@ -23,7 +23,7 @@ export default function CustomChart({ data }: ChartProps) {
   }));
 
   return (
-    <ResponsiveContainer className={styles.padder} width="100%" height={300}>
+    <ResponsiveContainer className={styles.padder} height={300}>
       <LineChart
         data={highValues.splice(0, 10)}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -31,8 +31,12 @@ export default function CustomChart({ data }: ChartProps) {
         <CartesianGrid />
         <XAxis dataKey="timestamp" />
         <YAxis dataKey="high" />
-        <Tooltip />
-        <Line type="monotone" dataKey="high" stroke="#FF0000" strokeWidth={2} />
+        <Tooltip
+          contentStyle={{ backgroundColor: "#222", color: "#fff" }}
+          itemStyle={{ color: "#00ffff" }}
+          labelStyle={{ color: "#00ffff" }}
+        />
+        <Line type="monotone" dataKey="high" stroke="#00ffff" strokeWidth={2} />
       </LineChart>
     </ResponsiveContainer>
   );

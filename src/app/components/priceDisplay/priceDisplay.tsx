@@ -16,7 +16,9 @@ export default function PriceDisplay() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [priceData, setPriceData] = useState<Array<PriceIndex> | null>(null);
-  const [filteredPriceData, setFilteredPriceData] = useState<any>(null);
+  const [filteredPriceData, setFilteredPriceData] = useState<Array<PriceIndex>>(
+    []
+  );
   const [paginatedData, setPaginatedData] = useState<Array<PriceIndex>>([]);
   const [currentPage, setCurrentPage] = useState(1);
 

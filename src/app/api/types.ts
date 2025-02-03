@@ -4,7 +4,7 @@ export type PriceDetails = {
     high: Array<number>;
     low: Array<number>;
     open: Array<number>;
-    timestamp: Array<Date>;
+    timestamp: Array<string>;
     volume: Array<number>;
   };
   ticker: string;

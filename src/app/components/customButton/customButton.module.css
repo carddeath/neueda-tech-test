@@ -1,0 +1,14 @@
+.buttonWrapper {
+  display: inline-block;
+  background-color: #00ffff;
+  color: black;
+  border-radius: 8px;
+  padding: 8px;
+  margin-left: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.disabledButton {
+  background-color: #757575;
+}

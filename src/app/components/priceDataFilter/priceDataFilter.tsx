@@ -3,6 +3,7 @@
 import { PriceIndex } from "@/app/types";
 import { useEffect, useState } from "react";
 import styles from "./priceDataFilter.module.css";
+import CustomButton from "../customButton/customButton";
 
 type DataFilterProps = {
   dataToFilter: Array<PriceIndex>;
@@ -60,7 +61,7 @@ export default function PriceDataFilter({
 
   return (
     <div className={styles.filterRow}>
-      <div>
+      <div className={styles.dateFilterContainer}>
         <label>
           Start Date:
           <input
@@ -77,9 +78,11 @@ export default function PriceDataFilter({
             onChange={(e) => setEndDate(e.target.value)}
           />
         </label>
-        <button className={styles.buttonWrapper} onClick={filterData}>
-          Filter
-        </button>
+        <CustomButton
+          onClickEvent={() => filterData}
+          disabled={false}
+          buttonText="Filter"
+        />
       </div>
       <div>
         <label>Sort By:</label>
@@ -89,21 +92,16 @@ export default function PriceDataFilter({
           <option value="low">Low</option>
           <option value="high">High</option>
         </select>
-
-        <button
-          className={styles.buttonWrapper}
-          onClick={() => handleSortChangeClicked("asc")}
+        <CustomButton
+          onClickEvent={() => handleSortChangeClicked("asc")}
           disabled={sortOrder === "asc"}
-        >
-          Sort Ascending
-        </button>
-        <button
-          className={styles.buttonWrapper}
-          onClick={() => handleSortChangeClicked("desc")}
+          buttonText="Sort Descending"
+        />
+        <CustomButton
+          onClickEvent={() => handleSortChangeClicked("desc")}
           disabled={sortOrder === "desc"}
-        >
-          Sort Descending
-        </button>
+          buttonText="Sort Descending"
+        />
       </div>
     </div>
   );

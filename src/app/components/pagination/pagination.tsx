@@ -1,5 +1,6 @@
 "use client";
 
+import CustomButton from "../customButton/customButton";
 import styles from "./pagination.module.css";
 
 type PaginationProps = {
@@ -22,21 +23,16 @@ export default function Pagination({
       <p className={styles.pages}>
         Page {currentPage} of {totalPages}
       </p>
-      <button
-        className={styles.buttonWrapper}
+      <CustomButton
+        onClickEvent={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        onClick={() => onPageChange(currentPage - 1)}
-      >
-        Previous
-      </button>
-
-      <button
-        className={styles.buttonWrapper}
+        buttonText="Previous"
+      />
+      <CustomButton
+        onClickEvent={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        onClick={() => onPageChange(currentPage + 1)}
-      >
-        Next
-      </button>
+        buttonText="Next"
+      />
     </div>
   );
 }

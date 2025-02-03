@@ -6,7 +6,6 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}></main>
       <PriceDisplay />
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

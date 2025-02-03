@@ -11,7 +11,7 @@ type TableProps = {
 
 export default function Table({ data }: TableProps) {
   return (
-    <div>
+    <div className={styles.tableContainer}>
       <table className={styles.tableWrapper}>
         <thead>
           <tr>
@@ -25,10 +25,10 @@ export default function Table({ data }: TableProps) {
             <tr key={index}>
               <td>{dataPoint.timestamp.toString()}</td>
               <td>{dataPoint.volume}</td>
-              <td>{dataPoint.open}</td>
-              <td>{dataPoint.close}</td>
-              <td>{dataPoint.high}</td>
-              <td>{dataPoint.low}</td>
+              <td>{dataPoint.open.toFixed(4)}</td>
+              <td>{dataPoint.close.toFixed(4)}</td>
+              <td>{dataPoint.high.toFixed(4)}</td>
+              <td>{dataPoint.low.toFixed(4)}</td>
             </tr>
           ))}
         </tbody>
